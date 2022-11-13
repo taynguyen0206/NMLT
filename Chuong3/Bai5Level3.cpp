@@ -1,22 +1,28 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 void timuoc(int n)
 {
-    if(n > 0){
-        for(int i = 1; i <= n; i++)
+    int tong;
+    if (n > 0)
+    {
+        for (int i = 1; i <= n; i++)
         {
-            if(n % i == 0)
+            if (n % i == 0)
             {
-                cout << i << " ";
+                tong += i;
             }
         }
-    }else{
+    }
+    else
+    {
         cout << "nhap n > 0";
     }
+    cout << tong;
 }
 
-int main(){
+int main()
+{
     int n;
     cin >> n;
     timuoc(n);

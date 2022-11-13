@@ -1,34 +1,39 @@
 #include <iostream>
-#include <climits>
 using namespace std;
 
+int max(int a, int b)
+{
+    return (a > b) ? a : b;
+}
 
-void findSecondMin(int* arr, int size, int& min, int& min2, int& max) {
-    for (int i = 0; i < size; i++) { 
-        if(arr[i] > max) { 
-            max = arr[i];
-        }
-        if(arr[i] < min) { 
-            min2 = min;
-            min = arr[i];
-        } else if(arr[i] < min2 && arr[i] > min) { 
-            min2 = arr[i];
-        }
+int min(int a, int b)
+{
+    return (a > b) ? b : a;
+}
+
+int min_thu_hai(int a, int b, int c)
+{
+    int m = min(min(a, b), c);
+    int M = max(max(a, b), c);
+    if (a != m && a != M)
+    {
+        return a;
+    }
+    else if (b != m && b != M)
+    {
+        return b;
+    }
+    else if (c != m && c != M)
+    {
+        return c;
     }
 }
 
-
-int main() {
-    int arr[] { 1, 4, 5};
-    
-    int min = INT_MAX;
-    int min2 = min;
-    int max = INT_MIN;
-    findSecondMin(arr, 3, min, min2, max);
-    
-    if(min != min2 && min2 <= max) {
-        cout << "Gia tri nho thu 2 trong mang: " << min2 << endl;
-    } else {
-        cout << "Khong co gia tri nho thu 2." << endl;
-    }
+int main()
+{
+    int a, b, c;
+    cin >> a >> b >> c;
+    int kq = min_thu_hai(a, b, c);
+    cout << kq;
+    return 0;
 }

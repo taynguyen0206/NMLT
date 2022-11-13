@@ -1,54 +1,56 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int check(int h, int m, int s){
-    if((h>=0 && h<24) && (m>=0 && m<60) && (s>=0 && s<60))
+void xuat(int h, int m, int s)
+{
+    cout << h << " " << m << " " << s;
+}
+
+int check(int h, int m, int s)
+{
+    if ((h >= 0 && h < 24) && (m >= 0 && m < 60) && (s >= 0 && s < 60))
     {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
 }
 
-void sau_mot_giay(int h, int m, int s){
-    if(check(h,m,s)==1)
+void sau_1_giay(int &h, int &m, int &s)
+{
+    if (s == 59)
     {
-        if(h==0 && m ==0 && s==0){
-        cout << 23 << " ";
-    }
-    else{
-        if(m==0 && s==0){
-            cout << h-1 << " ";
-        }
-        else{
-            cout << h << " ";
-        }
-    }
-    if(m==0 && s==0){
-        cout << 59 << " ";
-    }else{
-        if(s==0){
-            cout << m-1 << " ";
-        }else{
-            cout << m << " ";
+        s = 0;
+        m += 1;
+        if (m == 60)
+        {
+            m = 0;
+            h += 1;
+            if (h == 24)
+            {
+                h = 0;
+            }
         }
     }
-        if(s==0){
-            cout << 59 << " ";
-        }else{
-            cout << s-1 << " ";
-        }
-    }else{
-        cout << 0;
+    else
+    {
+        s++;
     }
-    
 }
 
-int main(){
-    int h,m,s;
+int main()
+{
+    int h, m, s;
     cin >> h >> m >> s;
-    check(h,m,s);
-    sau_mot_giay(h,m,s);
-    return 0;
+    if (!check(h, m, s))
+    {
+        cout << "Nhap sai du lieu";
+    }
+    else
+    {
+        sau_1_giay(h, m, s);
+        xuat(h, m, s);
+    }
 }
