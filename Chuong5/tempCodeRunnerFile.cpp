@@ -1,34 +1,27 @@
+
 #include <iostream>
 #include <math.h>
- 
+
 using namespace std;
- 
-bool snt(int n)
+
+bool scp(int n)
 {
-	if (n < 2){
-		return false;
-	}		
-	
-	for (int i = 2; i < (n - 1); i++){
-		if (n % i == 0){
-			return false;
-		}	
-	}
-	
-	return true;
+    int sqr = sqrt(n);
+    return (sqr * sqr == n);
 }
 
-int main(){
+int main()
+{
     int n;
     cin >> n;
-    snt(n);
+    scp(n);
     int dem = 0;
-    for(int i = 1; i <= n; i++){
-        if((n%i==0) && (snt(i)==true)){
+    for (int i = 1; i < n; i++)
+    {
+        if (scp(i) == true)
+        {
             dem++;
         }
     }
     cout << dem;
 }
-
-
