@@ -13,7 +13,7 @@ int main()
     {
         int ke_cuoi = gan % 10;
         gan /= 10;
-        if (cuoi > ke_cuoi)
+        if (cuoi < ke_cuoi)
         {
             Check = false;
             break;
@@ -25,10 +25,10 @@ int main()
     }
     if (Check == true)
     {
-        cout << "day giam dan";
+        cout << "day tang dan";
     }
     else
     {
-        cout << "day khong giam dan" << endl;
+        cout << "day khong tang dan" << endl;
     }
 }
